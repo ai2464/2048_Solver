@@ -53,11 +53,9 @@ class IntelligentAgent(BaseAI):
                 else:
                     maxTile = max(maxTile, grid.map[x][y])
                     value = math.log(grid.map[x][y]) / math.log(2)
-                    for d in [(1, 0), (0, 1)]:
-                        newX, newY = x + d[0], y + d[1]
-                        if newX < grid.size and newY < grid.size and grid.map[newX][newY] != 0:
-                            target_value = math.log(grid.map[newX][newY]) / math.log(2)
-                            smoothness -= abs(value - target_value)
+                    target_value = math.log(grid.map[x][y]) / math.log(2)
+                    smoothness -= abs(value - target_value)
+                    
 
         # Calculate monotonicity
         for x in range(grid.size):
@@ -70,7 +68,7 @@ class IntelligentAgent(BaseAI):
                     else:
                         monotonicity += current - next
 
-            # Simplified Corner strategy for highest tile
+        
         # Encourage keeping the largest tile in the top-left corner
         corner_weight = 0
         if grid.map[0][0] == max(max(row) for row in grid.map):
