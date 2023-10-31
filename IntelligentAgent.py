@@ -1,11 +1,9 @@
-import random
 import math
 from BaseAI import BaseAI
 
 class IntelligentAgent(BaseAI):
-    def __init__(self, max_depth=5, time_limit=0.2):
+    def __init__(self, max_depth = 5):
         self.max_depth = max_depth
-        self.time_limit = time_limit
 
     def getMove(self, grid):
         move, _ = self.maximize(grid, -float('inf'), float('inf'), 0)
@@ -93,4 +91,4 @@ class IntelligentAgent(BaseAI):
             return None
 
     # Define the maximum depth for searching
-    max_depth = 10  # Adjustable based on the performance
+    #max_depth = 9  # Adjustable based on the performance
